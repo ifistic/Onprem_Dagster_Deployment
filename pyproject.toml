@@ -13,6 +13,7 @@ dependencies = [
     "dagster-snowflake>=0.25,<1",
     "requests>=2.31",
     "python-dotenv>=1.0",
+    "dagster-cloud>=1.12.1",
 ]
 
 [tool.dagster]
