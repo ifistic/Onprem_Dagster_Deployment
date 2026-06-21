@@ -1,0 +1,16 @@
+[Unit]
+Description=Dagster Webserver (my_dbt_project orchestration)
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+User=ifiok
+WorkingDirectory=/opt/my_dbt_project/dagster_orchestration
+EnvironmentFile=/opt/my_dbt_project/dagster_orchestration/.env
+Environment=DAGSTER_HOME=/opt/my_dbt_project/dagster_orchestration
+ExecStart=/opt/my_dbt_project/dagster_orchestration/venv/bin/dagster-webserver -h 0.0.0.0 -p 3000
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

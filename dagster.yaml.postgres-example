@@ -1,0 +1,42 @@
+# OPTIONAL. Dagster works with zero instance config (defaults to a local
+# SQLite-backed DAGSTER_HOME) -- fine for trying things out.
+#
+# For an always-on deployment (e.g. the systemd setup in deploy/), rename
+# this file to `dagster.yaml` and set DAGSTER_HOME to this directory so
+# runs/schedules survive reboots and concurrent webserver+daemon access
+# doesn't corrupt SQLite.
+#
+# Requires: pip install dagster-postgres, and a reachable Postgres instance.
+
+storage:
+  postgres:
+    postgres_db:
+      username:
+        env: DAGSTER_PG_USERNAME
+      password:
+        env: DAGSTER_PG_PASSWORD
+      hostname:
+        env: DAGSTER_PG_HOST
+      db_name:
+        env: DAGSTER_PG_DB
+      port:
+        env: DAGSTER_PG_PORT
+
+run_coordinator:
+  module: dagster.core.run_coordinator
+  class: QueuedRunCoordinator
+  config:
+    max_concurrent_runs: 4
+
+run_launcher:
+  module: dagster._core.launcher
+  class: DefaultRunLauncher
+
+retention:
+  schedule:
+    purge_after_days: 90
+  sensor:
+    purge_after_days: 90
+
+telemetry:
+  enabled: false

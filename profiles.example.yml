@@ -1,0 +1,13 @@
+ifiok_dbt_proj:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: "{{ env_var('SNOWFLAKE_ROLE', 'accountadmin') }}"
+      database: "{{ env_var('SNOWFLAKE_DATABASE', 'ifiok_db') }}"
+      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE', 'compute_wh') }}"
+      schema: "{{ env_var('SNOWFLAKE_SCHEMA', 'RAW') }}"
+      threads: 10

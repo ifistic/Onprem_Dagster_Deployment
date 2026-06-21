@@ -1,0 +1,23 @@
+[project]
+name = "my_dbt_project_dagster"
+version = "0.1.0"
+description = "Dagster orchestration layer for ifistic/my_dbt_project (dbt + Snowflake)"
+requires-python = ">=3.9,<3.13"
+dependencies = [
+    "dagster>=1.9,<2",
+    "dagster-dbt>=0.25,<1",
+    "dagster-webserver>=1.9,<2",
+    "dagster-slack>=0.25,<1",
+    "dagster-postgres>=0.25,<1",
+    "dbt-snowflake>=1.8,<2",
+    "dagster-snowflake>=0.25,<1",
+    "requests>=2.31",
+    "python-dotenv>=1.0",
+]
+
+[tool.dagster]
+module_name = "my_dbt_project_dagster.definitions"
+code_location_name = "my_dbt_project_dagster"
+
+[tool.setuptools.packages.find]
+include = ["my_dbt_project_dagster*"]

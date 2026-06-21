@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Env files (don’t commit secrets)
+.env
+
+# Dagster / runtime state
+.tmp_dagster_home_*/
+*.db
+logs/
+
+# Python build artifacts
+*.egg-info/
+dist/
+build/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+profiles.yml

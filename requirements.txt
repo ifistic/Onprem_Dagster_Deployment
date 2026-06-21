@@ -1,0 +1,7 @@
+dagster>=1.9,<2
+dagster-dbt>=0.25,<1
+dagster-webserver>=1.9,<2
+dagster-slack>=0.25,<1
+dagster-postgres>=0.25,<1
+dbt-snowflake>=1.8,<2
+python-dotenv>=1.0
