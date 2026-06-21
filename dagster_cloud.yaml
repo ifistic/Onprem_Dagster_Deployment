@@ -1,0 +1,4 @@
+locations:
+- code_source:
+    module_name: my_dbt_project_dagster.definitions
+  location_name: my_dbt_project_dagster
