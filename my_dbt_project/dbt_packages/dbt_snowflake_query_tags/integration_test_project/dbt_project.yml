@@ -1,0 +1,17 @@
+name: 'dbt_snowflake_query_tags_tests'
+version: '1.0.0'
+config-version: 2
+
+profile: dbt_snowflake_query_tags_tests
+
+
+dispatch:
+  - macro_namespace: dbt
+    search_order:
+      - dbt_snowflake_query_tags_tests
+      - dbt_snowflake_query_tags
+      - dbt
+
+query-comment:
+  comment: '{{ dbt_snowflake_query_tags.get_query_comment(node, extra={"run_started_at": builtins.run_started_at | string }) }}'
+  append: true # Snowflake removes prefixed comments.
