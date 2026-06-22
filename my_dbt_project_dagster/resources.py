@@ -1,15 +1,15 @@
 import os
-
 from dagster_dbt import DbtCliResource
 from dagster_snowflake import SnowflakeResource
 from dagster_slack import SlackResource
 import dagster as dg
-
 from .project import my_dbt_project
+
+_profiles_dir = os.getenv("DBT_PROFILES_DIR")
 
 dbt_resource = DbtCliResource(
     project_dir=my_dbt_project,
-    profiles_dir=os.getenv("DBT_PROFILES_DIR", str(my_dbt_project.project_dir)),
+    **( {"profiles_dir": _profiles_dir} if _profiles_dir else {} ),
 )
 
 snowflake_resource = SnowflakeResource(
@@ -21,5 +21,3 @@ snowflake_resource = SnowflakeResource(
     warehouse=dg.EnvVar("SNOWFLAKE_WAREHOUSE"),
     schema_=dg.EnvVar("SNOWFLAKE_SCHEMA"),
 )
-
-slack_resource = SlackResource(token=dg.EnvVar("SLACK_BOT_TOKEN"))
