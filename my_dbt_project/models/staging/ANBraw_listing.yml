@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: custom2   # ← THIS is what you reference in your model
+    database: AIRBNB
+    schema: RAW
+    tables:
+      - name: RAW_LISTINGS
+

@@ -1,0 +1,7 @@
+packages:
+  - package: dbt-labs/dbt-utils
+    version: i.3.0
+  - package: get-select/dbt_snowflake_monitoring
+    version: 5.4.5
+  - package: dbt-labs/dbt_external_tables
+    version: 0.11.1

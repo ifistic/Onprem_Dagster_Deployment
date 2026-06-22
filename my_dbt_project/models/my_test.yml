@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: dim_listings
+    description: dimension table for listings
+    columns:
+
+     - name: listing_id
+       description: table id key
+       tests:
+         - unique
+         - not_null
+
+     - name: host_id
+       description: id for host table
+       tests:
+         - not_null
+         - relationships:
+             to: ref('dim_hosts')
+             field: host_id
+
+     - name: room_type
+       tests:
+         - accepted_values:
+             values: ['Entire home/apt',
+                      'Private room',
+                      'Shared room',
+                      'Hotel room']
