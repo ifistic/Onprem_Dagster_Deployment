@@ -21,3 +21,5 @@ snowflake_resource = SnowflakeResource(
     warehouse=dg.EnvVar("SNOWFLAKE_WAREHOUSE"),
     schema_=dg.EnvVar("SNOWFLAKE_SCHEMA"),
 )
+
+slack_resource = SlackResource(token=dg.EnvVar("SLACK_BOT_TOKEN"))
